@@ -134,6 +134,7 @@ function! himalaya#domain#email#set_list_envelopes_query() abort
 endfunction
 
 function! s:write(msg, email) abort
+  let altbuffer = getreg('#')
   let bufname = printf('Himalaya %s', a:msg)
   if a:msg == 'write'
     execute printf('silent! botright new %s', bufname)
@@ -150,6 +151,7 @@ function! s:write(msg, email) abort
   setlocal filetype=himalaya-email-writing
   let &modified = 0
   execute 0
+  call setreg('#', altbuffer)
 endfunction
 
 function! himalaya#domain#email#complete_contact(findstart, base) abort
