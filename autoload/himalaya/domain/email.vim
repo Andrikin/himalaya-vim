@@ -186,6 +186,7 @@ function! himalaya#domain#email#save_draft() abort
 endfunction
 
 function! himalaya#domain#email#process_draft() abort
+  let altbuffer = getreg('#')
   try
     let account = himalaya#domain#account#current()
     while 1
@@ -225,6 +226,7 @@ function! himalaya#domain#email#process_draft() abort
       call himalaya#log#err(v:exception)
     endif
   endtry
+  call setreg('#', altbuffer)
 endfunction
 
 function! himalaya#domain#email#select_folder_then_copy() abort
