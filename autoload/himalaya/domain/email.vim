@@ -136,12 +136,12 @@ endfunction
 function! s:write(msg, email) abort
   let bufname = printf('Himalaya %s', a:msg)
   if a:msg == 'write'
-    execute printf('silent! botright new %s', bufname)
+    execute printf('silent! keepalt botright new %s', bufname)
   endif
   if winnr('$') == 1
-    execute printf('silent! botright split %s', bufname)
+    execute printf('silent! keepalt botright split %s', bufname)
   else
-    execute printf('silent! edit %s', bufname)
+    execute printf('silent! keepalt edit %s', bufname)
   endif
   setlocal modifiable
   silent execute '%d'
