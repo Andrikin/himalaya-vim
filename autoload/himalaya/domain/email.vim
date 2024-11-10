@@ -194,6 +194,7 @@ function! himalaya#domain#email#process_draft() abort
       if choice == 's'
         let draft = tempname()
 	call writefile(getline(1, '$'), draft)
+        bdelete!
         return himalaya#request#plain({
         \ 'cmd': 'template send --account %s < %s',
         \ 'args': [shellescape(account), shellescape(draft)],
@@ -203,6 +204,7 @@ function! himalaya#domain#email#process_draft() abort
       elseif choice == 'd'
         let draft = tempname()
 	call writefile(getline(1, '$'), draft)
+        bdelete!
         return himalaya#request#plain({
         \ 'cmd': 'template save --account %s --folder drafts < %s',
         \ 'args': [shellescape(account), shellescape(draft)],
@@ -210,6 +212,7 @@ function! himalaya#domain#email#process_draft() abort
         \ 'on_data': {-> delete(draft)},
         \})
       elseif choice == 'q'
+        bdelete!
         return
       elseif choice == 'c'
         call himalaya#domain#email#write(join(getline(1, '$'), "\n") . "\n")
