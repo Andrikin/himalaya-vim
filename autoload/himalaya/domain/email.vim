@@ -278,6 +278,10 @@ function! himalaya#domain#email#delete() abort range
   \})
 endfunction
 
+function! himalaya#domain#email#quit() abort range
+    quit!
+endfunction
+
 function! s:bufwidth() abort " https://newbedev.com/get-usable-window-width-in-vim-script
   let width = winwidth(0)
   let numberwidth = max([&numberwidth, strlen(line('$'))+1])

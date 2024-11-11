@@ -18,4 +18,5 @@ call himalaya#keybinds#define([
   \['n', 'gD'  , 'email#delete'                  ],
   \['v', 'gD'  , 'email#delete'                  ],
   \['n', 'g/'  , 'email#set_list_envelopes_query'],
+  \['n', 'gq'  , 'email#quit'                  ],
 \])

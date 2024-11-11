@@ -9,6 +9,7 @@ endif
 
 call himalaya#keybinds#define([
   \['n', 'ga', 'email#add_attachment'],
+  \['n', 'gq', 'email#quit'],
 \])
 
 augroup himalaya_write
