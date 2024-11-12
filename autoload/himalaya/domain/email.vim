@@ -78,6 +78,18 @@ function! himalaya#domain#email#download_attachments() abort
   \})
 endfunction
 
+" just insert text in buffer
+function! himalaya#domain#email#add_attachment() abort
+    let cmd = '<#part filename=%s><#/part>'
+    let file = getreg('+')
+    if file =~ '^file:'
+        let file = substitute(file, '^file:...', '')
+    else
+        let file = substitute(input("File for attachment: ", "", "file"), '\', '/', 'g')
+    endif
+    call setline(line('.'), printf(cmd, shellescape(file)))
+endfunction
+
 function! himalaya#domain#email#write(...) abort
   let account = himalaya#domain#account#current()
   if a:0 > 0
