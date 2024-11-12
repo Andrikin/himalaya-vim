@@ -278,7 +278,7 @@ function! himalaya#domain#email#delete() abort range
   \})
 endfunction
 
-function! himalaya#domain#email#quit() abort range
+function! himalaya#domain#email#quit() abort
     quit!
 endfunction
 
