@@ -56,7 +56,7 @@ endfunction
 
 function! s:read(id, email)
   call s:close_open_buffers('Himalaya read email')
-  execute printf('silent! botright new Himalaya read email [%s]', a:id)
+  execute printf('silent! keepalt botright new Himalaya read email [%s]', a:id)
   setlocal modifiable
   silent execute '%d'
   call append(0, split(substitute(a:email, "\r", '', 'g'), "\n"))
