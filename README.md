@@ -109,6 +109,15 @@ With the [fzf.vim](https://github.com/junegunn/fzf.vim) picker:
 :Himalaya
 ```
 
+Change accounts:
+
+```vim
+:Himalaya <account>
+```
+
+Default keybinds:
+
+
 | Function                                               | Keybind   |
 |--------------------------------------------------------|-----------|
 | Change the current folder                              | `gm`      |
