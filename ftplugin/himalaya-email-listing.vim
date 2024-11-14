@@ -20,8 +20,3 @@ call himalaya#keybinds#define([
   \['n', 'g/'  , 'email#set_list_envelopes_query'],
   \['n', 'gq'  , 'email#quit'                  ],
 \])
-
-augroup himalaya_listing
-  autocmd! * <buffer>
-  autocmd  BufEnter <buffer> call himalaya#domain#email#list()
-augroup end
