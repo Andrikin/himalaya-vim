@@ -13,7 +13,7 @@ endif
 let s:cpo_backup = &cpo
 set cpo&vim
 
-command! -nargs=* Himalaya             call himalaya#domain#email#list(<f-args>)
+command! -complete=customlist,himalaya#domain#account#complete -nargs=* Himalaya call himalaya#domain#email#list(<f-args>)
 command! -nargs=* HimalayaCopy         call himalaya#domain#email#select_folder_then_copy()
 command! -nargs=* HimalayaMove         call himalaya#domain#email#select_folder_then_move()
 command! -nargs=* HimalayaDelete       call himalaya#domain#email#delete()
