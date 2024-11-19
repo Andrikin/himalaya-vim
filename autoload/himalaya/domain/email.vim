@@ -31,12 +31,13 @@ function! s:list_with(folder, page, emails) abort
   let query = empty(s:query) ? 'all' : s:query
   execute printf('silent! %s Himalaya envelopes [%s] [%s] [page %d]', buftype, a:folder, query, a:page)
   setlocal modifiable
+  let mark = line('.')
   silent execute '%d'
   call append(0, split(a:emails, "\n"))
   silent execute '$d'
   setlocal filetype=himalaya-email-listing
   let &modified = 0
-  execute 0
+  execute mark
 endfunction
 
 function! himalaya#domain#email#read() abort
