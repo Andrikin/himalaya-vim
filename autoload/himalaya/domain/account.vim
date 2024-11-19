@@ -11,13 +11,15 @@ endfunction
 " return accounts list
 function! himalaya#domain#account#list() abort
     let found = []
-    let cmd = g:himalaya_executable . ' --config ' . g:himalaya_config_path
-    let cmd .= ' account list'
-    let cmd .= ' --output json'
-    let accounts = json_decode(system(cmd))
-    for account in accounts
-        call add(found, account['name'])
-    endfor
+    call foreach(json_decode(system([
+    \ g:himalaya_executable,
+    \ '--config',
+    \ g:himalaya_config_path,
+    \ 'account',
+    \ 'list',
+    \ '--output',
+    \ 'json',
+    \])), {k, v -> add(found, v.name)})
     return found
 endfunction
 
