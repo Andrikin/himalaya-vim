@@ -143,6 +143,7 @@ endfunction
 function! himalaya#domain#email#set_list_envelopes_query() abort
   let s:query = input('Query: ')
   call himalaya#domain#email#list()
+  let s:query = ''
 endfunction
 
 function! s:write(msg, email) abort
