@@ -10,8 +10,7 @@ endfunction
 
 " return accounts list
 function! himalaya#domain#account#list() abort
-    let found = []
-    call foreach(json_decode(system([
+    return map(json_decode(system([
     \ g:himalaya_executable,
     \ '--config',
     \ g:himalaya_config_path,
@@ -19,8 +18,7 @@ function! himalaya#domain#account#list() abort
     \ 'list',
     \ '--output',
     \ 'json',
-    \])), {k, v -> add(found, v.name)})
-    return found
+    \])), {k, v -> v.name})
 endfunction
 
 " complete tab for Himalaya command
