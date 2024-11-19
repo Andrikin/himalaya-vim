@@ -81,14 +81,16 @@ endfunction
 
 " just insert text in buffer
 function! himalaya#domain#email#add_attachment() abort
-    let cmd = '<#part filename=%s><#/part>'
-    let file = getreg('+')
-    if file =~ '^file:'
-        let file = substitute(file, '^file:...', '')
-    else
-        let file = substitute(input("File for attachment: ", "", "file"), '\', '/', 'g')
-    endif
-    call setline(line('.'), printf(cmd, shellescape(file)))
+  let win = has('win32')
+  let cmd = '<#part filename=%s><#/part>'
+  let home = ''
+  if win
+    let home = 'C:' . glob(expand('$HOMEPATH') . '/Downloads')
+  else
+    let home = glob(expand('$HOME') . '/downloads')
+  endif
+  let file = substitute(input("File for attachment: ", home, "file"), '\', '/', 'g')
+  call setline(line('.'), printf(cmd, shellescape(file)))
 endfunction
 
 function! himalaya#domain#email#write(...) abort
