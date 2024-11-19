@@ -85,12 +85,12 @@ function! himalaya#domain#email#add_attachment() abort
   let cmd = '<#part filename=%s><#/part>'
   let home = ''
   if win
-    let home = 'C:' . glob(expand('$HOMEPATH') . '/Downloads')
+    let home = 'C:' . glob(expand('$HOMEPATH') . '/Downloads/')
   else
-    let home = glob(expand('$HOME') . '/downloads')
+    let home = glob(expand('$HOME') . '/downloads/')
   endif
   let file = substitute(input("File for attachment: ", home, "file"), '\', '/', 'g')
-  call setline(line('.'), printf(cmd, shellescape(file)))
+  call append(line('$'), printf(cmd, shellescape(file)))
 endfunction
 
 function! himalaya#domain#email#write(...) abort
