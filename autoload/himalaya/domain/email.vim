@@ -29,7 +29,7 @@ endfunction
 function! s:list_with(folder, page, emails) abort
   let buftype = stridx(bufname('%'), 'Himalaya envelopes') == 0 ? 'file' : 'edit'
   let query = empty(s:query) ? 'all' : s:query
-  execute printf('silent! %s Himalaya envelopes [%s] [%s] [page %d]', buftype, a:folder, query, a:page)
+  execute printf('silent! keepalt %s Himalaya envelopes [%s] [%s] [page %d]', buftype, a:folder, query, a:page)
   setlocal modifiable
   let mark = line('.')
   silent execute '%d'
