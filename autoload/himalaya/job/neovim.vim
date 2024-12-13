@@ -28,11 +28,17 @@ endfunction
 
 function! s:on_exit(callback) abort
   if !empty(s:stderr)
+    let error = 0
     for line in s:stderr
-      call himalaya#log#err(line)
+      if !line =~ 'attachment.s. found for message id!\|Downloading\|Downloaded'
+        let error = 1
+      endif
+        call himalaya#log#err(line)
     endfor
     redraw
-    throw 'CLI error, see :messages for more information'
+    if error
+      throw 'CLI error, see :messages for more information'
+    endif
   endif
   " echom s:stdout
   call a:callback(s:stdout)
